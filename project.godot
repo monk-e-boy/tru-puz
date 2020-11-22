@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="tru-puz"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/resizable=false
+
 [input]
 
 ui_left={

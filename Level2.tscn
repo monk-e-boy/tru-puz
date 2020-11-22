@@ -1,7 +1,25 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://platforms_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/lvl1/bg.png" type="Texture" id=2]
+[ext_resource path="res://assets/Green tiles/tileGreen_circle.png" type="Texture" id=3]
+[ext_resource path="res://lvl2/RigidBody2D.gd" type="Script" id=4]
+[ext_resource path="res://PlayerGreen.tscn" type="PackedScene" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 15.1996
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.49799, 15.7944 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 15.396
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 7.21741, 15.7243 )
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 32.1321
 
 [node name="Node2D" type="Node2D"]
 
@@ -13,4 +31,154 @@ texture = ExtResource( 2 )
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 format = 1
-tile_data = PoolIntArray( 589824, 1, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 2, 0 )
+tile_data = PoolIntArray( 65551, 3, 0, 262154, 1, 0, 262155, 2, 0, 589824, 1, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 2, 0 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2( 330.93, 403.439 )
+gravity_scale = 0.05
+sleeping = true
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+position = Vector2( 419.318, 365.255 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D2"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D2"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D3" type="RigidBody2D" parent="."]
+position = Vector2( 508.414, 317.172 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D3"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D3"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D3"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D4" type="RigidBody2D" parent="."]
+position = Vector2( 583.766, 275.398 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D4"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D4"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D4"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D5" type="RigidBody2D" parent="."]
+position = Vector2( 875.555, 94.3076 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D5"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D5"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D5"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D6" type="RigidBody2D" parent="."]
+position = Vector2( 825.044, 191.962 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D6"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D6"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D6"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D7" type="RigidBody2D" parent="."]
+position = Vector2( 748.717, 193.084 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D7"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D7"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D7"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D8" type="RigidBody2D" parent="."]
+position = Vector2( 790.248, 95.43 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D8"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D8"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D8"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D9" type="RigidBody2D" parent="."]
+position = Vector2( 904.739, 190.839 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D9"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D9"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D9"]
+shape = SubResource( 2 )
+
+[node name="PlayerGreen" parent="." instance=ExtResource( 5 )]
+position = Vector2( 103.769, 304.148 )
+jump_speed = -400
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 209.364, 485.74 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 4 )
+
+[node name="Area2DReset" type="Area2D" parent="."]
+position = Vector2( 43.8406, 557.907 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DReset"]
+shape = SubResource( 5 )
+[connection signal="body_entered" from="Area2DReset" to="RigidBody2D" method="_on_Area2D_body_entered"]

@@ -1,0 +1,83 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://platforms_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://PlayerGreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/green-2.png" type="Texture" id=3]
+[ext_resource path="res://lvl3/JumpParticles.gd" type="Script" id=4]
+[ext_resource path="res://PlayerBlue.tscn" type="PackedScene" id=5]
+[ext_resource path="res://lvl3/JumpParticlesBlue.gd" type="Script" id=6]
+[ext_resource path="res://assets/blue-2.png" type="Texture" id=7]
+[ext_resource path="res://assets/lvl1/bg.png" type="Texture" id=8]
+[ext_resource path="res://lvl3/JumpParticlesYellow.gd" type="Script" id=9]
+[ext_resource path="res://PlayerYellow.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/yellow-2.png" type="Texture" id=11]
+
+[sub_resource type="ParticlesMaterial" id=1]
+flag_disable_z = true
+direction = Vector3( 0, -7, 0 )
+spread = 30.03
+gravity = Vector3( 0, 1200, 0 )
+initial_velocity = 420.0
+initial_velocity_random = 0.65
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 365.377, 327.579 )
+scale = Vector2( 200, 100 )
+texture = ExtResource( 8 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( 131075, 3, 0, 131078, 3, 0, 131081, 3, 0, 131085, 1, 0, 131086, 0, 0, 131087, 0, 0, 196608, 3, 0, 327681, 3, 0, 327684, 3, 0, 327687, 3, 0, 327690, 3, 0, 327693, 3, 0, 458767, 3, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 2, 0, 589832, 3, 0, 589835, 3, 0, 589838, 3, 0 )
+
+[node name="PlayerGreen" parent="." instance=ExtResource( 2 )]
+position = Vector2( 58.733, 515.913 )
+jump_speed = -400
+
+[node name="JumpParticles" type="Particles2D" parent="PlayerGreen"]
+emitting = false
+amount = 7
+lifetime = 2.0
+explosiveness = 1.0
+fract_delta = false
+local_coords = false
+process_material = SubResource( 1 )
+texture = ExtResource( 3 )
+script = ExtResource( 4 )
+
+[node name="PlayerBlue" parent="." instance=ExtResource( 5 )]
+position = Vector2( 83, 516 )
+
+[node name="JumpParticlesBlue" type="Particles2D" parent="PlayerBlue"]
+scale = Vector2( 1, 1 )
+emitting = false
+amount = 7
+lifetime = 2.0
+explosiveness = 1.0
+fract_delta = false
+local_coords = false
+process_material = SubResource( 1 )
+texture = ExtResource( 7 )
+script = ExtResource( 6 )
+
+[node name="PlayerYellow" parent="." instance=ExtResource( 10 )]
+position = Vector2( 107.535, 515.958 )
+
+[node name="JumpParticlesYellow" type="Particles2D" parent="PlayerYellow"]
+scale = Vector2( 1, 1 )
+emitting = false
+amount = 7
+lifetime = 2.0
+explosiveness = 1.0
+fract_delta = false
+local_coords = false
+process_material = SubResource( 1 )
+texture = ExtResource( 11 )
+script = ExtResource( 9 )
+[connection signal="jump" from="PlayerGreen" to="PlayerGreen/JumpParticles" method="_on_PlayerGreen_jump"]
+[connection signal="jump" from="PlayerBlue" to="PlayerBlue/JumpParticlesBlue" method="_on_PlayerBlue_jump"]
+[connection signal="jump" from="PlayerYellow" to="PlayerYellow/JumpParticlesYellow" method="_on_PlayerYellow_jump"]

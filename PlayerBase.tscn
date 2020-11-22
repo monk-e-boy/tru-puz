@@ -4,11 +4,12 @@
 [ext_resource path="res://PlayerBase.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 146.772
-height = 5.55951
+radius = 8.00791
+height = 0.0
 
 [node name="Node2D" type="KinematicBody2D"]
 script = ExtResource( 2 )
+jump_speed = -430
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

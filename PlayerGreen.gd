@@ -6,3 +6,4 @@ func _init():
 	self.ui_select = 'p1_jump'
 	
 	self.lucky = false
+

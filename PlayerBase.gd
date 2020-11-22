@@ -26,6 +26,11 @@ var ui_right = ''
 var ui_left = ''
 var ui_select = ''
 
+#
+# SIGNALS
+#
+signal jump
+
 func process_input():
 	var right = Input.is_action_pressed(ui_right)
 	var left = Input.is_action_pressed(ui_left)
@@ -43,11 +48,13 @@ func process_input():
 		self.jumping = true
 		self.jumping_double = false
 		self.vel.y = jump_speed
+		emit_signal("jump")
 
 	if jump and not is_on_floor() and not self.jumping_double:
 		self.jumping = true
 		self.jumping_double = true
 		self.vel.y = jump_speed
+		emit_signal("jump")
 
 
 func _physics_process(delta):
