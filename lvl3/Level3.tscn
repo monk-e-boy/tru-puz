@@ -53,7 +53,6 @@ script = ExtResource( 4 )
 position = Vector2( 83, 516 )
 
 [node name="JumpParticlesBlue" type="Particles2D" parent="PlayerBlue"]
-scale = Vector2( 1, 1 )
 emitting = false
 amount = 7
 lifetime = 2.0
@@ -68,7 +67,6 @@ script = ExtResource( 6 )
 position = Vector2( 107.535, 515.958 )
 
 [node name="JumpParticlesYellow" type="Particles2D" parent="PlayerYellow"]
-scale = Vector2( 1, 1 )
 emitting = false
 amount = 7
 lifetime = 2.0

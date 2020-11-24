@@ -1,10 +1,55 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://platforms_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/lvl1/bg.png" type="Texture" id=2]
 [ext_resource path="res://assets/Green tiles/tileGreen_circle.png" type="Texture" id=3]
-[ext_resource path="res://lvl2/RigidBody2D.gd" type="Script" id=4]
+[ext_resource path="res://lvl2/Level2.gd" type="Script" id=4]
 [ext_resource path="res://PlayerGreen.tscn" type="PackedScene" id=5]
+[ext_resource path="res://lvl2/MetallicaSprite.gd" type="Script" id=6]
+[ext_resource path="res://assets/lvl2/m2.png" type="Texture" id=7]
+[ext_resource path="res://assets/lvl2/m1.png" type="Texture" id=8]
+[ext_resource path="res://assets/lvl2/rest-all-1.png" type="Texture" id=9]
+[ext_resource path="res://assets/lvl2/rest-all-2.png" type="Texture" id=10]
+[ext_resource path="res://PlayerBlue.tscn" type="PackedScene" id=11]
+[ext_resource path="res://PlayerYellow.tscn" type="PackedScene" id=12]
+[ext_resource path="res://lvl2/SlipknotSprite.gd" type="Script" id=13]
+[ext_resource path="res://assets/lvl2/s1.png" type="Texture" id=14]
+[ext_resource path="res://assets/lvl2/s2.png" type="Texture" id=15]
+[ext_resource path="res://lvl2/SOADSprite.gd" type="Script" id=16]
+[ext_resource path="res://assets/lvl2/sd1.png" type="Texture" id=17]
+[ext_resource path="res://assets/lvl2/sd2.png" type="Texture" id=18]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 15.1996
@@ -18,26 +63,57 @@ radius = 15.396
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 7.21741, 15.7243 )
 
-[sub_resource type="CircleShape2D" id=5]
-radius = 32.1321
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 68.5364, 22.1848 )
+
+[sub_resource type="CircleShape2D" id=7]
+radius = 33.4879
+
+[sub_resource type="CircleShape2D" id=11]
+radius = 32.6435
+
+[sub_resource type="CircleShape2D" id=13]
+radius = 29.5886
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="BG" type="Sprite" parent="."]
 position = Vector2( 527.626, 322.805 )
 scale = Vector2( 122.445, 68.2039 )
 texture = ExtResource( 2 )
 
+[node name="MetallicaSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 917.035, 493.891 )
+frames = SubResource( 6 )
+script = ExtResource( 6 )
+
+[node name="SlipknotSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 165.419, 196.841 )
+scale = Vector2( 0.7, 0.7 )
+frames = SubResource( 10 )
+script = ExtResource( 13 )
+
+[node name="SOADSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 965.251, 180.797 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 12 )
+script = ExtResource( 16 )
+
+[node name="ResetAllSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 74.3065, 493.262 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 8 )
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 format = 1
-tile_data = PoolIntArray( 65551, 3, 0, 262154, 1, 0, 262155, 2, 0, 589824, 1, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 2, 0 )
+tile_data = PoolIntArray( 65551, 3, 0, 131075, 3, 0, 262154, 1, 0, 262155, 2, 0, 524302, 3, 0, 589824, 1, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 2, 0 )
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2( 330.93, 403.439 )
 gravity_scale = 0.05
 sleeping = true
-script = ExtResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="RigidBody2D"]
 texture = ExtResource( 3 )
@@ -160,9 +236,131 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D9"]
 shape = SubResource( 2 )
 
-[node name="PlayerGreen" parent="." instance=ExtResource( 5 )]
-position = Vector2( 103.769, 304.148 )
-jump_speed = -400
+[node name="RigidBody2D10" type="RigidBody2D" parent="."]
+position = Vector2( 255.956, 372.678 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D10"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D10"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D10"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D11" type="RigidBody2D" parent="."]
+position = Vector2( 356.978, 315.432 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D11"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D11"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D11"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D12" type="RigidBody2D" parent="."]
+position = Vector2( 449.019, 262.677 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D12"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D12"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D12"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D13" type="RigidBody2D" parent="."]
+position = Vector2( 528.714, 214.411 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D13"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D13"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D13"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D14" type="RigidBody2D" parent="."]
+position = Vector2( 713.041, 97.8684 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D14"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D14"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D14"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D15" type="RigidBody2D" parent="."]
+position = Vector2( 584.607, 361.872 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D15"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D15"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D15"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D16" type="RigidBody2D" parent="."]
+position = Vector2( 367.028, 212.37 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D16"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D16"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D16"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D17" type="RigidBody2D" parent="."]
+position = Vector2( 296.282, 177.664 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D17"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D17"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D17"]
+shape = SubResource( 2 )
+
+[node name="RigidBody2D18" type="RigidBody2D" parent="."]
+position = Vector2( 846.236, 403.252 )
+gravity_scale = 0.05
+sleeping = true
+
+[node name="Sprite" type="Sprite" parent="RigidBody2D18"]
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D18"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="RigidBody2D18"]
+shape = SubResource( 2 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 209.364, 485.74 )
@@ -176,9 +374,46 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource( 4 )
 
+[node name="PlayerGreen" parent="." instance=ExtResource( 5 )]
+position = Vector2( 289.285, 485 )
+jump_speed = -400
+
+[node name="PlayerBlue" parent="." instance=ExtResource( 11 )]
+position = Vector2( 266.693, 485.265 )
+
+[node name="PlayerYellow" parent="." instance=ExtResource( 12 )]
+position = Vector2( 243.574, 485 )
+
 [node name="Area2DReset" type="Area2D" parent="."]
-position = Vector2( 43.8406, 557.907 )
+position = Vector2( 35.5162, 492.501 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DReset"]
-shape = SubResource( 5 )
-[connection signal="body_entered" from="Area2DReset" to="RigidBody2D" method="_on_Area2D_body_entered"]
+position = Vector2( 35.9078, -1.25995 )
+shape = SubResource( 9 )
+
+[node name="MetallicaDetect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MetallicaDetect"]
+position = Vector2( 924.911, 496.888 )
+shape = SubResource( 7 )
+
+[node name="SlipknotDetect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlipknotDetect"]
+position = Vector2( 224.266, 112.133 )
+shape = SubResource( 11 )
+
+[node name="SOADDetect" type="Area2D" parent="."]
+position = Vector2( 991.134, 44.8985 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SOADDetect"]
+shape = SubResource( 13 )
+[connection signal="body_entered" from="Area2DReset" to="." method="_on_Area2DReset_body_entered"]
+[connection signal="body_entered" from="MetallicaDetect" to="MetallicaSprite" method="_on_MetallicaDetect_body_entered"]
+[connection signal="body_entered" from="MetallicaDetect" to="." method="_on_MetallicaDetect_body_entered"]
+[connection signal="body_exited" from="MetallicaDetect" to="MetallicaSprite" method="_on_MetallicaDetect_body_exited"]
+[connection signal="body_exited" from="MetallicaDetect" to="." method="_on_MetallicaDetect_body_exited"]
+[connection signal="body_entered" from="SlipknotDetect" to="SlipknotSprite" method="_on_SlipknotDetect_body_entered"]
+[connection signal="body_exited" from="SlipknotDetect" to="SlipknotSprite" method="_on_SlipknotDetect_body_exited"]
+[connection signal="body_entered" from="SOADDetect" to="SOADSprite" method="_on_SOADDetect_body_entered"]
+[connection signal="body_exited" from="SOADDetect" to="SOADSprite" method="_on_SOADDetect_body_exited"]
