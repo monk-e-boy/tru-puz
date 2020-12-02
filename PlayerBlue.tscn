@@ -8,5 +8,9 @@
 script = ExtResource( 2 )
 jump_speed = -400
 
-[node name="Sprite" parent="." index="1"]
+[node name="CollisionShape2D2" parent="." index="1"]
+position = Vector2( 0, -5.34539 )
+
+[node name="Sprite" parent="." index="2"]
+visible = true
 texture = ExtResource( 3 )

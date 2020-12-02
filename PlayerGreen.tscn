@@ -7,5 +7,9 @@
 [node name="PlayerGreen" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
-[node name="Sprite" parent="." index="1"]
+[node name="CollisionShape2D2" parent="." index="1"]
+position = Vector2( 0, -5.03969 )
+
+[node name="Sprite" parent="." index="2"]
+visible = true
 texture = ExtResource( 2 )

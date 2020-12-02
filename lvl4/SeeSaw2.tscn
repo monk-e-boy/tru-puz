@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/debug.png" type="Texture" id=1]
+[ext_resource path="res://lvl4/SeeSaw2Body.gd" type="Script" id=2]
+[ext_resource path="res://assets/lvl4/knob.png" type="Texture" id=3]
+[ext_resource path="res://assets/lvl4/eleven-2.png" type="Texture" id=4]
+[ext_resource path="res://lvl4/SeeSaw2.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 68, 5 )
+
+[node name="SeeSaw" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 2.12131, 21.8953 )
+texture = ExtResource( 4 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+scale = Vector2( 0.44, 0.44 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Tilt" type="RigidBody2D" parent="."]
+script = ExtResource( 2 )
+player_force = -25
+
+[node name="PinJoint2D" type="PinJoint2D" parent="Tilt"]
+node_a = NodePath("..")
+node_b = NodePath("../../StaticBody2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tilt"]
+rotation = 3.14159
+shape = SubResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="Tilt/CollisionShape2D"]
+texture = ExtResource( 3 )
+
+[node name="Sprite" type="Sprite" parent="Tilt/CollisionShape2D"]
+modulate = Color( 0, 0, 0, 0.32549 )
+scale = Vector2( 136, 10 )
+texture = ExtResource( 1 )

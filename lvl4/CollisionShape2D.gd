@@ -1,19 +1,14 @@
 extends CollisionShape2D
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var prev_angle = self.rotation
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var color = Color.white
-	var ext:Vector2 = shape.extents
-	var rect:Rect2 = Rect2(Vector2(-ext.x, -ext.y), ext*2)
-	draw_rect(rect, color, true)
+	if int(self.rotation_degrees) != self.prev_angle:
+		self.prev_angle = int(self.rotation_degrees)
+		
+		print(self.rotation_degrees)
+		
+		if self.rotation_degrees > 55 and self.rotation_degrees < 65:
+			print("YES ANGLE")

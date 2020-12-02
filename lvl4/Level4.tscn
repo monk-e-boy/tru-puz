@@ -1,44 +1,169 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://PlayerGreen.tscn" type="PackedScene" id=1]
-[ext_resource path="res://lvl4/CollisionShape2D.gd" type="Script" id=2]
-[ext_resource path="res://assets/debug.png" type="Texture" id=3]
-[ext_resource path="res://lvl4/RigidBody2D.gd" type="Script" id=4]
+[ext_resource path="res://assets/lvl1/bg.png" type="Texture" id=2]
+[ext_resource path="res://PlayerYellow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://lvl4/SeeSaw2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://PlayerBlue.tscn" type="PackedScene" id=5]
+[ext_resource path="res://platforms_tileset.tres" type="TileSet" id=6]
+[ext_resource path="res://lvl4/Bulb-1.gd" type="Script" id=7]
+[ext_resource path="res://lvl4/Bulb-4.gd" type="Script" id=8]
+[ext_resource path="res://assets/lvl4/up-to-11.png" type="Texture" id=9]
+[ext_resource path="res://assets/lvl4/bulb-2.png" type="Texture" id=10]
+[ext_resource path="res://assets/lvl4/bulb-4.png" type="Texture" id=11]
+[ext_resource path="res://assets/lvl4/bulb-1.png" type="Texture" id=12]
+[ext_resource path="res://assets/lvl4/bulb-3.png" type="Texture" id=13]
+[ext_resource path="res://lvl4/Bulb-2.gd" type="Script" id=14]
+[ext_resource path="res://lvl4/Bulb-3.gd" type="Script" id=15]
+[ext_resource path="res://assets/lvl4/fin-2.png" type="Texture" id=16]
+[ext_resource path="res://assets/lvl4/fin-1.png" type="Texture" id=17]
+[ext_resource path="res://assets/lvl4/fin-3.png" type="Texture" id=18]
+[ext_resource path="res://lvl4/FinCollisionShape2D.gd" type="Script" id=19]
+[ext_resource path="res://lvl4/FinDetector.gd" type="Script" id=20]
+[ext_resource path="res://assets/lvl4/you-win.png" type="Texture" id=21]
+[ext_resource path="res://lvl4/Button.gd" type="Script" id=22]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 10 ), ExtResource( 13 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 135, 10 )
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 17 ), ExtResource( 16 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 65.6401
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 828.741, 157.786 )
 
 [node name="Node2D" type="Node2D"]
 
+[node name="bg" type="Sprite" parent="."]
+scale = Vector2( 300, 300 )
+texture = ExtResource( 2 )
+
+[node name="Bulb-1" type="AnimatedSprite" parent="."]
+position = Vector2( 299, 150 )
+rotation = 0.461768
+frames = SubResource( 1 )
+script = ExtResource( 7 )
+
+[node name="Bulb-2" type="AnimatedSprite" parent="."]
+position = Vector2( 465, 69 )
+rotation = -3.12536
+scale = Vector2( 0.704877, 0.704877 )
+frames = SubResource( 1 )
+script = ExtResource( 14 )
+
+[node name="Bulb-3" type="AnimatedSprite" parent="."]
+position = Vector2( 657, 83 )
+rotation = -1.94683
+scale = Vector2( 0.910472, 0.910472 )
+frames = SubResource( 1 )
+script = ExtResource( 15 )
+
+[node name="Bulb-4" type="AnimatedSprite" parent="."]
+position = Vector2( 952, 410 )
+rotation = -4.45608
+scale = Vector2( 0.847939, 0.847939 )
+frames = SubResource( 1 )
+script = ExtResource( 8 )
+
+[node name="turn-it-up" type="Sprite" parent="."]
+position = Vector2( 98.2154, 127.303 )
+scale = Vector2( 0.806581, 0.806581 )
+texture = ExtResource( 9 )
+
+[node name="FinDetector" type="Area2D" parent="."]
+position = Vector2( 961.95, 483.781 )
+script = ExtResource( 20 )
+
+[node name="Fin" type="AnimatedSprite" parent="FinDetector"]
+position = Vector2( -9.24133, -6.54572 )
+scale = Vector2( 0.801934, 0.801934 )
+frames = SubResource( 2 )
+
+[node name="FinCollisionShape2D" type="CollisionShape2D" parent="FinDetector"]
+position = Vector2( -2, 4 )
+shape = SubResource( 3 )
+script = ExtResource( 19 )
+
+[node name="Bucket" type="Area2D" parent="."]
+position = Vector2( 509.188, 885.881 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bucket"]
+shape = SubResource( 4 )
+
+[node name="SeeSaw" parent="." instance=ExtResource( 4 )]
+position = Vector2( 736.613, 420.329 )
+
+[node name="SeeSaw2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 465.185, 296.64 )
+
+[node name="SeeSaw3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 200.62, 374.73 )
+
+[node name="SeeSaw4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 866.61, 114.893 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 6 )
+format = 1
+tile_data = PoolIntArray( 65547, 3, 0, 196618, 3, 0, 196623, 3, 0, 327689, 3, 0, 327693, 3, 0, 458753, 3, 0, 458757, 3, 0, 589823, 0, 0, 524302, 1, 0, 524303, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 2, 0 )
+
 [node name="PlayerGreen" parent="." instance=ExtResource( 1 )]
-position = Vector2( 391.058, 373.079 )
+position = Vector2( 990.367, 146.16 )
 
 [node name="PlayerBlue" parent="." instance=ExtResource( 5 )]
-position = Vector2( 500.685, 371.505 )
+position = Vector2( 859.338, 273.952 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 400, 449.013 )
+[node name="PlayerYellow" parent="." instance=ExtResource( 3 )]
+position = Vector2( 884.663, 274.126 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource( 1 )
-disabled = true
+[node name="YouWin" type="Sprite" parent="."]
+visible = false
+position = Vector2( 484.44, 292.273 )
+texture = ExtResource( 21 )
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
-position = Vector2( 400, 449.013 )
-script = ExtResource( 4 )
-
-[node name="PinJoint2D" type="PinJoint2D" parent="RigidBody2D"]
-node_a = NodePath("..")
-node_b = NodePath("../../StaticBody2D")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
-shape = SubResource( 2 )
-script = ExtResource( 2 )
-
-[node name="Sprite" type="Sprite" parent="RigidBody2D/CollisionShape2D"]
-scale = Vector2( 270, 20 )
-texture = ExtResource( 3 )
-[connection signal="jump" from="PlayerGreen" to="RigidBody2D" method="_on_PlayerGreen_jump"]
+[node name="Button" type="Button" parent="YouWin"]
+margin_left = -72.1305
+margin_top = 13.5442
+margin_right = 25.0
+margin_bottom = 44.0
+text = "Start again?"
+script = ExtResource( 22 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="body_entered" from="FinDetector" to="FinDetector/FinCollisionShape2D" method="_on_FinDetector_body_entered"]
+[connection signal="body_exited" from="FinDetector" to="FinDetector/FinCollisionShape2D" method="_on_FinDetector_body_exited"]
+[connection signal="have_players" from="FinDetector/FinCollisionShape2D" to="FinDetector" method="_on_FinCollisionShape2D_have_players"]
+[connection signal="body_entered" from="Bucket" to="PlayerBlue" method="_on_Bucket_body_entered"]
+[connection signal="body_entered" from="Bucket" to="PlayerGreen" method="_on_Area2D_body_entered"]
+[connection signal="body_entered" from="Bucket" to="PlayerYellow" method="_on_Bucket_body_entered"]
+[connection signal="is_eleven" from="SeeSaw" to="Bulb-4" method="_on_SeeSaw_is_eleven"]
+[connection signal="is_eleven" from="SeeSaw2" to="Bulb-2" method="_on_SeeSaw2_is_eleven"]
+[connection signal="is_eleven" from="SeeSaw3" to="Bulb-1" method="_on_SeeSaw3_is_eleven"]
+[connection signal="is_eleven" from="SeeSaw4" to="Bulb-3" method="_on_SeeSaw4_is_eleven"]
+[connection signal="jump" from="PlayerGreen" to="SeeSaw3" method="_on_PlayerGreen_jump"]
+[connection signal="jump" from="PlayerGreen" to="SeeSaw" method="_on_PlayerGreen_jump"]
+[connection signal="jump" from="PlayerGreen" to="SeeSaw4" method="_on_PlayerGreen_jump"]
+[connection signal="jump" from="PlayerGreen" to="SeeSaw2" method="_on_PlayerGreen_jump"]
+[connection signal="jump" from="PlayerBlue" to="SeeSaw3" method="_on_PlayerBlue_jump"]
+[connection signal="jump" from="PlayerBlue" to="SeeSaw" method="_on_PlayerBlue_jump"]
+[connection signal="jump" from="PlayerBlue" to="SeeSaw4" method="_on_PlayerBlue_jump"]
+[connection signal="jump" from="PlayerBlue" to="SeeSaw2" method="_on_PlayerBlue_jump"]
+[connection signal="jump" from="PlayerYellow" to="SeeSaw3" method="_on_PlayerYellow_jump"]
+[connection signal="jump" from="PlayerYellow" to="SeeSaw" method="_on_PlayerYellow_jump"]
+[connection signal="jump" from="PlayerYellow" to="SeeSaw4" method="_on_PlayerYellow_jump"]
+[connection signal="jump" from="PlayerYellow" to="SeeSaw2" method="_on_PlayerYellow_jump"]
+[connection signal="pressed" from="YouWin/Button" to="YouWin/Button" method="_on_Button_pressed"]

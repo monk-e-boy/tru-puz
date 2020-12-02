@@ -30,6 +30,8 @@ var ui_select = ''
 # SIGNALS
 #
 signal jump
+signal double_jump
+
 
 func process_input():
 	var right = Input.is_action_pressed(ui_right)
@@ -54,7 +56,7 @@ func process_input():
 		self.jumping = true
 		self.jumping_double = true
 		self.vel.y = jump_speed
-		emit_signal("jump")
+		emit_signal("double_jump")
 
 
 func _physics_process(delta):

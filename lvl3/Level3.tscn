@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://platforms_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://PlayerGreen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/green-2.png" type="Texture" id=3]
-[ext_resource path="res://lvl3/JumpParticles.gd" type="Script" id=4]
+[ext_resource path="res://lvl3/JumpParticlesGreen.gd" type="Script" id=4]
 [ext_resource path="res://PlayerBlue.tscn" type="PackedScene" id=5]
 [ext_resource path="res://lvl3/JumpParticlesBlue.gd" type="Script" id=6]
 [ext_resource path="res://assets/blue-2.png" type="Texture" id=7]
@@ -11,6 +11,48 @@
 [ext_resource path="res://lvl3/JumpParticlesYellow.gd" type="Script" id=9]
 [ext_resource path="res://PlayerYellow.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/yellow-2.png" type="Texture" id=11]
+[ext_resource path="res://assets/lvl3/g-0.png" type="Texture" id=12]
+[ext_resource path="res://assets/lvl3/g-1.png" type="Texture" id=13]
+[ext_resource path="res://lvl3/gojira.gd" type="Script" id=14]
+[ext_resource path="res://lvl3/JumpParticlesGreen2.gd" type="Script" id=15]
+[ext_resource path="res://lvl3/JumpParticlesBlue2.gd" type="Script" id=16]
+[ext_resource path="res://lvl3/JumpParticlesYellow2.gd" type="Script" id=17]
+[ext_resource path="res://assets/lvl3/es-0.png" type="Texture" id=18]
+[ext_resource path="res://assets/lvl3/es-1.png" type="Texture" id=19]
+[ext_resource path="res://assets/lvl3/es-2.png" type="Texture" id=20]
+[ext_resource path="res://lvl3/enter-shikari.gd" type="Script" id=21]
+[ext_resource path="res://lvl-common/FinDetector.tscn" type="PackedScene" id=22]
+[ext_resource path="res://lvl3/Win.gd" type="Script" id=23]
+[ext_resource path="res://assets/lvl3/ps-4.png" type="Texture" id=24]
+[ext_resource path="res://assets/lvl3/ps-0.png" type="Texture" id=25]
+[ext_resource path="res://assets/lvl3/ps-1.png" type="Texture" id=26]
+[ext_resource path="res://assets/lvl3/ps-2.png" type="Texture" id=27]
+[ext_resource path="res://assets/lvl3/ps-3.png" type="Texture" id=28]
+[ext_resource path="res://lvl3/the-postal-service.gd" type="Script" id=29]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="ParticlesMaterial" id=1]
 flag_disable_z = true
@@ -22,12 +64,37 @@ initial_velocity_random = 0.65
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 1079.4, 109.289 )
+
 [node name="Node2D" type="Node2D"]
+position = Vector2( -1, -60 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 365.377, 327.579 )
 scale = Vector2( 200, 100 )
 texture = ExtResource( 8 )
+
+[node name="gojira" type="AnimatedSprite" parent="."]
+position = Vector2( 812, 382 )
+frames = SubResource( 3 )
+script = ExtResource( 14 )
+
+[node name="enter-shikari" type="AnimatedSprite" parent="."]
+position = Vector2( 168.179, 233.769 )
+scale = Vector2( 0.567849, 0.567849 )
+frames = SubResource( 4 )
+script = ExtResource( 21 )
+
+[node name="the-postal-service" type="AnimatedSprite" parent="."]
+position = Vector2( 451.134, 550.129 )
+scale = Vector2( 0.652194, 0.652194 )
+frames = SubResource( 5 )
+script = ExtResource( 29 )
+
+[node name="FinDetector" parent="." instance=ExtResource( 22 )]
+position = Vector2( 979.566, 94.0387 )
+scale = Vector2( 0.783519, 0.783519 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -38,7 +105,7 @@ tile_data = PoolIntArray( 131075, 3, 0, 131078, 3, 0, 131081, 3, 0, 131085, 1, 0
 position = Vector2( 58.733, 515.913 )
 jump_speed = -400
 
-[node name="JumpParticles" type="Particles2D" parent="PlayerGreen"]
+[node name="JumpParticlesGreen" type="Particles2D" parent="PlayerGreen"]
 emitting = false
 amount = 7
 lifetime = 2.0
@@ -48,6 +115,17 @@ local_coords = false
 process_material = SubResource( 1 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
+
+[node name="JumpParticlesGreen2" type="Particles2D" parent="PlayerGreen"]
+emitting = false
+amount = 7
+lifetime = 2.0
+explosiveness = 1.0
+fract_delta = false
+local_coords = false
+process_material = SubResource( 1 )
+texture = ExtResource( 3 )
+script = ExtResource( 15 )
 
 [node name="PlayerBlue" parent="." instance=ExtResource( 5 )]
 position = Vector2( 83, 516 )
@@ -63,6 +141,17 @@ process_material = SubResource( 1 )
 texture = ExtResource( 7 )
 script = ExtResource( 6 )
 
+[node name="JumpParticlesBlue2" type="Particles2D" parent="PlayerBlue"]
+emitting = false
+amount = 7
+lifetime = 2.0
+explosiveness = 1.0
+fract_delta = false
+local_coords = false
+process_material = SubResource( 1 )
+texture = ExtResource( 7 )
+script = ExtResource( 16 )
+
 [node name="PlayerYellow" parent="." instance=ExtResource( 10 )]
 position = Vector2( 107.535, 515.958 )
 
@@ -76,6 +165,67 @@ local_coords = false
 process_material = SubResource( 1 )
 texture = ExtResource( 11 )
 script = ExtResource( 9 )
-[connection signal="jump" from="PlayerGreen" to="PlayerGreen/JumpParticles" method="_on_PlayerGreen_jump"]
+
+[node name="JumpParticlesYellow2" type="Particles2D" parent="PlayerYellow"]
+emitting = false
+amount = 7
+lifetime = 2.0
+explosiveness = 1.0
+fract_delta = false
+local_coords = false
+process_material = SubResource( 1 )
+texture = ExtResource( 11 )
+script = ExtResource( 17 )
+
+[node name="Bucket" type="Area2D" parent="."]
+position = Vector2( 42.4264, 726.906 )
+
+[node name="CollisionBucket" type="CollisionShape2D" parent="Bucket"]
+position = Vector2( 402, 118 )
+shape = SubResource( 2 )
+
+[node name="Win" type="Panel" parent="."]
+visible = false
+margin_left = 264.726
+margin_top = 242.422
+margin_right = 304.726
+margin_bottom = 282.422
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Win"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_scale = Vector2( 13.8525, 6.71125 )
+
+[node name="CenterContainer" type="CenterContainer" parent="Win"]
+anchor_right = 1.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="Win/CenterContainer"]
+margin_top = 10.0
+margin_right = 124.0
+margin_bottom = 30.0
+text = "Now we're cookin"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="have_all_players" from="FinDetector" to="Win" method="_on_FinDetector_have_all_players"]
+[connection signal="double_jump" from="PlayerGreen" to="PlayerGreen/JumpParticlesGreen2" method="_on_PlayerGreen_double_jump"]
+[connection signal="jump" from="PlayerGreen" to="PlayerGreen/JumpParticlesGreen" method="_on_PlayerGreen_jump"]
+[connection signal="double_jump" from="PlayerBlue" to="PlayerBlue/JumpParticlesBlue2" method="_on_PlayerBlue_double_jump"]
 [connection signal="jump" from="PlayerBlue" to="PlayerBlue/JumpParticlesBlue" method="_on_PlayerBlue_jump"]
+[connection signal="double_jump" from="PlayerYellow" to="PlayerYellow/JumpParticlesYellow2" method="_on_PlayerYellow_double_jump"]
 [connection signal="jump" from="PlayerYellow" to="PlayerYellow/JumpParticlesYellow" method="_on_PlayerYellow_jump"]
+[connection signal="body_entered" from="Bucket" to="PlayerBlue" method="_on_Bucket_body_entered"]
+[connection signal="body_entered" from="Bucket" to="PlayerGreen" method="_on_Bucket_body_entered"]
+[connection signal="body_entered" from="Bucket" to="PlayerYellow" method="_on_Bucket_body_entered"]
+[connection signal="pressed" from="Win/CenterContainer/Button" to="Win" method="_on_Button_pressed"]
