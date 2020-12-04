@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://PlayerGreen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/lvl1/bg.png" type="Texture" id=2]
@@ -22,6 +22,8 @@
 [ext_resource path="res://lvl4/FinDetector.gd" type="Script" id=20]
 [ext_resource path="res://assets/lvl4/you-win.png" type="Texture" id=21]
 [ext_resource path="res://lvl4/Button.gd" type="Script" id=22]
+[ext_resource path="res://lvl4/Level4Controller.gd" type="Script" id=23]
+[ext_resource path="res://assets/lvl4/fin-4.png" type="Texture" id=24]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -33,7 +35,7 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 17 ), ExtResource( 16 ), ExtResource( 18 ) ],
+"frames": [ ExtResource( 17 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 24 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -45,7 +47,8 @@ radius = 65.6401
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 828.741, 157.786 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Level4Controller" type="Node2D"]
+script = ExtResource( 23 )
 
 [node name="bg" type="Sprite" parent="."]
 scale = Vector2( 300, 300 )
@@ -147,9 +150,7 @@ __meta__ = {
 [connection signal="body_entered" from="FinDetector" to="FinDetector/FinCollisionShape2D" method="_on_FinDetector_body_entered"]
 [connection signal="body_exited" from="FinDetector" to="FinDetector/FinCollisionShape2D" method="_on_FinDetector_body_exited"]
 [connection signal="have_players" from="FinDetector/FinCollisionShape2D" to="FinDetector" method="_on_FinCollisionShape2D_have_players"]
-[connection signal="body_entered" from="Bucket" to="PlayerBlue" method="_on_Bucket_body_entered"]
-[connection signal="body_entered" from="Bucket" to="PlayerGreen" method="_on_Area2D_body_entered"]
-[connection signal="body_entered" from="Bucket" to="PlayerYellow" method="_on_Bucket_body_entered"]
+[connection signal="body_entered" from="Bucket" to="." method="_on_Bucket_body_entered"]
 [connection signal="is_eleven" from="SeeSaw" to="Bulb-4" method="_on_SeeSaw_is_eleven"]
 [connection signal="is_eleven" from="SeeSaw2" to="Bulb-2" method="_on_SeeSaw2_is_eleven"]
 [connection signal="is_eleven" from="SeeSaw3" to="Bulb-1" method="_on_SeeSaw3_is_eleven"]

@@ -25,15 +25,15 @@ func _process(delta):
 
 
 func _on_PlayerYellow_jump():
-	var player_node = get_node("/root/Node2D/PlayerYellow/")
+	var player_node = get_node("/root/Level4Controller/PlayerYellow/")
 	self._jump(player_node)
 
 func _on_PlayerBlue_jump():
-	var player_node = get_node("/root/Node2D/PlayerBlue/")
+	var player_node = get_node("/root/Level4Controller/PlayerBlue/")
 	self._jump(player_node)
 
 func _on_PlayerGreen_jump():
-	var player_node = get_node("/root/Node2D/PlayerGreen/")
+	var player_node = get_node("/root/Level4Controller/PlayerGreen/")
 	self._jump(player_node)
 
 func _jump(player_node):

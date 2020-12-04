@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://platforms_tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://PlayerGreen.tscn" type="PackedScene" id=2]
@@ -29,8 +29,9 @@
 [ext_resource path="res://assets/lvl3/ps-2.png" type="Texture" id=27]
 [ext_resource path="res://assets/lvl3/ps-3.png" type="Texture" id=28]
 [ext_resource path="res://lvl3/the-postal-service.gd" type="Script" id=29]
+[ext_resource path="res://lvl3/Level3Controller.gd" type="Script" id=30]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
@@ -38,7 +39,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
@@ -46,7 +47,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 25 ), ExtResource( 24 ) ],
 "loop": true,
@@ -54,7 +55,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="ParticlesMaterial" id=4]
 flag_disable_z = true
 direction = Vector3( 0, -7, 0 )
 spread = 30.03
@@ -64,11 +65,12 @@ initial_velocity_random = 0.65
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 1079.4, 109.289 )
 
-[node name="Node2D" type="Node2D"]
+[node name="Level3Controller" type="Node2D"]
 position = Vector2( -1, -60 )
+script = ExtResource( 30 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 365.377, 327.579 )
@@ -77,19 +79,19 @@ texture = ExtResource( 8 )
 
 [node name="gojira" type="AnimatedSprite" parent="."]
 position = Vector2( 812, 382 )
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 script = ExtResource( 14 )
 
 [node name="enter-shikari" type="AnimatedSprite" parent="."]
 position = Vector2( 168.179, 233.769 )
 scale = Vector2( 0.567849, 0.567849 )
-frames = SubResource( 4 )
+frames = SubResource( 2 )
 script = ExtResource( 21 )
 
 [node name="the-postal-service" type="AnimatedSprite" parent="."]
 position = Vector2( 451.134, 550.129 )
 scale = Vector2( 0.652194, 0.652194 )
-frames = SubResource( 5 )
+frames = SubResource( 3 )
 script = ExtResource( 29 )
 
 [node name="FinDetector" parent="." instance=ExtResource( 22 )]
@@ -112,7 +114,7 @@ lifetime = 2.0
 explosiveness = 1.0
 fract_delta = false
 local_coords = false
-process_material = SubResource( 1 )
+process_material = SubResource( 4 )
 texture = ExtResource( 3 )
 script = ExtResource( 4 )
 
@@ -123,7 +125,7 @@ lifetime = 2.0
 explosiveness = 1.0
 fract_delta = false
 local_coords = false
-process_material = SubResource( 1 )
+process_material = SubResource( 4 )
 texture = ExtResource( 3 )
 script = ExtResource( 15 )
 
@@ -137,7 +139,7 @@ lifetime = 2.0
 explosiveness = 1.0
 fract_delta = false
 local_coords = false
-process_material = SubResource( 1 )
+process_material = SubResource( 4 )
 texture = ExtResource( 7 )
 script = ExtResource( 6 )
 
@@ -148,7 +150,7 @@ lifetime = 2.0
 explosiveness = 1.0
 fract_delta = false
 local_coords = false
-process_material = SubResource( 1 )
+process_material = SubResource( 4 )
 texture = ExtResource( 7 )
 script = ExtResource( 16 )
 
@@ -162,7 +164,7 @@ lifetime = 2.0
 explosiveness = 1.0
 fract_delta = false
 local_coords = false
-process_material = SubResource( 1 )
+process_material = SubResource( 4 )
 texture = ExtResource( 11 )
 script = ExtResource( 9 )
 
@@ -173,7 +175,7 @@ lifetime = 2.0
 explosiveness = 1.0
 fract_delta = false
 local_coords = false
-process_material = SubResource( 1 )
+process_material = SubResource( 4 )
 texture = ExtResource( 11 )
 script = ExtResource( 17 )
 
@@ -182,7 +184,7 @@ position = Vector2( 42.4264, 726.906 )
 
 [node name="CollisionBucket" type="CollisionShape2D" parent="Bucket"]
 position = Vector2( 402, 118 )
-shape = SubResource( 2 )
+shape = SubResource( 5 )
 
 [node name="Win" type="Panel" parent="."]
 visible = false
@@ -225,7 +227,5 @@ __meta__ = {
 [connection signal="jump" from="PlayerBlue" to="PlayerBlue/JumpParticlesBlue" method="_on_PlayerBlue_jump"]
 [connection signal="double_jump" from="PlayerYellow" to="PlayerYellow/JumpParticlesYellow2" method="_on_PlayerYellow_double_jump"]
 [connection signal="jump" from="PlayerYellow" to="PlayerYellow/JumpParticlesYellow" method="_on_PlayerYellow_jump"]
-[connection signal="body_entered" from="Bucket" to="PlayerBlue" method="_on_Bucket_body_entered"]
-[connection signal="body_entered" from="Bucket" to="PlayerGreen" method="_on_Bucket_body_entered"]
-[connection signal="body_entered" from="Bucket" to="PlayerYellow" method="_on_Bucket_body_entered"]
+[connection signal="body_entered" from="Bucket" to="." method="_on_Bucket_body_entered"]
 [connection signal="pressed" from="Win/CenterContainer/Button" to="Win" method="_on_Button_pressed"]
