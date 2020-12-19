@@ -62,7 +62,10 @@ func process_input():
 func _physics_process(delta):
 	self.process_input()
 	
+	self.vel.x += self.wind * delta
 	self.vel.y += GRAVITY * delta
+	
+	
 	if self.jumping and is_on_floor():
 		self.jumping = false
 		self.jumping_double = false
@@ -101,3 +104,8 @@ func pushed(direction):
 	
 	if direction == LEFT:
 		self.vel.x = -SPEED * amt
+
+var wind = 0
+func set_wind(val):
+	self.wind = val
+	

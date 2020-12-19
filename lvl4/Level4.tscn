@@ -51,7 +51,8 @@ extents = Vector2( 828.741, 157.786 )
 script = ExtResource( 23 )
 
 [node name="bg" type="Sprite" parent="."]
-scale = Vector2( 300, 300 )
+position = Vector2( 913.582, 16.9706 )
+scale = Vector2( 248.343, 248.343 )
 texture = ExtResource( 2 )
 
 [node name="Bulb-1" type="AnimatedSprite" parent="."]
@@ -101,7 +102,8 @@ shape = SubResource( 3 )
 script = ExtResource( 19 )
 
 [node name="Bucket" type="Area2D" parent="."]
-position = Vector2( 509.188, 885.881 )
+position = Vector2( 933.452, 1310.15 )
+scale = Vector2( 1.66959, -0.714512 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bucket"]
 shape = SubResource( 4 )
@@ -121,7 +123,7 @@ position = Vector2( 866.61, 114.893 )
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 6 )
 format = 1
-tile_data = PoolIntArray( 65547, 3, 0, 196618, 3, 0, 196623, 3, 0, 327689, 3, 0, 327693, 3, 0, 458753, 3, 0, 458757, 3, 0, 589823, 0, 0, 524302, 1, 0, 524303, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 2, 0 )
+tile_data = PoolIntArray( 65547, 3, 0, 196618, 3, 0, 196623, 3, 0, 327689, 3, 0, 327693, 3, 0, 458751, 4, 0, 524287, 4, 0, 458753, 3, 0, 458757, 3, 0, 589823, 4, 0, 524302, 1, 0, 524303, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 2, 0 )
 
 [node name="PlayerGreen" parent="." instance=ExtResource( 1 )]
 position = Vector2( 990.367, 146.16 )
@@ -155,16 +157,16 @@ __meta__ = {
 [connection signal="is_eleven" from="SeeSaw2" to="Bulb-2" method="_on_SeeSaw2_is_eleven"]
 [connection signal="is_eleven" from="SeeSaw3" to="Bulb-1" method="_on_SeeSaw3_is_eleven"]
 [connection signal="is_eleven" from="SeeSaw4" to="Bulb-3" method="_on_SeeSaw4_is_eleven"]
-[connection signal="jump" from="PlayerGreen" to="SeeSaw3" method="_on_PlayerGreen_jump"]
-[connection signal="jump" from="PlayerGreen" to="SeeSaw" method="_on_PlayerGreen_jump"]
 [connection signal="jump" from="PlayerGreen" to="SeeSaw4" method="_on_PlayerGreen_jump"]
+[connection signal="jump" from="PlayerGreen" to="SeeSaw" method="_on_PlayerGreen_jump"]
 [connection signal="jump" from="PlayerGreen" to="SeeSaw2" method="_on_PlayerGreen_jump"]
-[connection signal="jump" from="PlayerBlue" to="SeeSaw3" method="_on_PlayerBlue_jump"]
-[connection signal="jump" from="PlayerBlue" to="SeeSaw" method="_on_PlayerBlue_jump"]
+[connection signal="jump" from="PlayerGreen" to="SeeSaw3" method="_on_PlayerGreen_jump"]
 [connection signal="jump" from="PlayerBlue" to="SeeSaw4" method="_on_PlayerBlue_jump"]
+[connection signal="jump" from="PlayerBlue" to="SeeSaw" method="_on_PlayerBlue_jump"]
 [connection signal="jump" from="PlayerBlue" to="SeeSaw2" method="_on_PlayerBlue_jump"]
-[connection signal="jump" from="PlayerYellow" to="SeeSaw3" method="_on_PlayerYellow_jump"]
-[connection signal="jump" from="PlayerYellow" to="SeeSaw" method="_on_PlayerYellow_jump"]
+[connection signal="jump" from="PlayerBlue" to="SeeSaw3" method="_on_PlayerBlue_jump"]
 [connection signal="jump" from="PlayerYellow" to="SeeSaw4" method="_on_PlayerYellow_jump"]
+[connection signal="jump" from="PlayerYellow" to="SeeSaw" method="_on_PlayerYellow_jump"]
 [connection signal="jump" from="PlayerYellow" to="SeeSaw2" method="_on_PlayerYellow_jump"]
+[connection signal="jump" from="PlayerYellow" to="SeeSaw3" method="_on_PlayerYellow_jump"]
 [connection signal="pressed" from="YouWin/Button" to="YouWin/Button" method="_on_Button_pressed"]

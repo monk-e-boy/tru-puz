@@ -39,6 +39,14 @@ func level_complete():
 
 func _on_Bucket_body_entered(body):
 	if "Player" in body.name:
-		body.position.x = 158
+		#body.position.x = 158
+		#body.position.y = 269
+		body.position.x = 1820
 		body.position.y = 269
 		body.vel = Vector2(0,0)
+		
+#Input handler, listen for ESC to exit app
+func _input(event):
+	if(event.is_pressed()):
+		if(event.scancode == KEY_ESCAPE):
+			get_tree().quit() 

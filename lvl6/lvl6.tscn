@@ -1,0 +1,238 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://platforms_tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://PlayerGreen.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PlayerYellow.tscn" type="PackedScene" id=3]
+[ext_resource path="res://PlayerBlue.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/lvl1/bg.png" type="Texture" id=5]
+[ext_resource path="res://assets/lvl6/light-texture.png" type="Texture" id=6]
+[ext_resource path="res://lvl6/GreenLight2D2.gd" type="Script" id=7]
+[ext_resource path="res://lvl6/YellowLight2D2.gd" type="Script" id=8]
+[ext_resource path="res://lvl6/YellowFollow.gd" type="Script" id=9]
+[ext_resource path="res://assets/debug.png" type="Texture" id=10]
+[ext_resource path="res://lvl6/lvl6.gd" type="Script" id=11]
+[ext_resource path="res://lvl6/Light2D.gd" type="Script" id=12]
+[ext_resource path="res://assets/lvl6/mountain_octo.png" type="Texture" id=13]
+[ext_resource path="res://assets/lvl6/mg-9.png" type="Texture" id=14]
+[ext_resource path="res://assets/lvl6/mg-8.png" type="Texture" id=15]
+[ext_resource path="res://assets/lvl6/mg-7.png" type="Texture" id=16]
+[ext_resource path="res://assets/lvl6/mg-6.png" type="Texture" id=17]
+[ext_resource path="res://assets/lvl6/mg-2.png" type="Texture" id=18]
+[ext_resource path="res://assets/lvl6/mg-1.png" type="Texture" id=19]
+[ext_resource path="res://assets/lvl6/mg-3.png" type="Texture" id=20]
+[ext_resource path="res://assets/lvl6/mg-4.png" type="Texture" id=21]
+[ext_resource path="res://assets/lvl6/mg-5.png" type="Texture" id=22]
+[ext_resource path="res://lvl6/TripLight.tscn" type="PackedScene" id=23]
+[ext_resource path="res://assets/lvl6/met.jpg" type="Texture" id=24]
+[ext_resource path="res://assets/lvl6/mg-2-5.png" type="Texture" id=25]
+[ext_resource path="res://assets/lvl6/mg-2-2.png" type="Texture" id=26]
+[ext_resource path="res://assets/lvl6/mg-2-3.png" type="Texture" id=27]
+[ext_resource path="res://assets/lvl6/mg-2-4.png" type="Texture" id=28]
+[ext_resource path="res://assets/lvl6/mg-2-1.png" type="Texture" id=29]
+[ext_resource path="res://lvl6/LightCount.gd" type="Script" id=30]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 19 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 17 ), ExtResource( 16 ), ExtResource( 15 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 29 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 25 ), null ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( 10, 10, 10, -10, -10, -10, -10, 10 )
+
+[sub_resource type="CanvasItemMaterial" id=4]
+light_mode = 1
+
+[node name="lvl6" type="Node2D"]
+script = ExtResource( 11 )
+
+[node name="bg" type="Sprite" parent="."]
+position = Vector2( 935.043, 544.67 )
+scale = Vector2( 228.386, 113.462 )
+texture = ExtResource( 5 )
+
+[node name="Logo" type="Sprite" parent="."]
+position = Vector2( 1514.52, 393.482 )
+scale = Vector2( 0.492977, 0.492977 )
+texture = ExtResource( 13 )
+
+[node name="Bubbles" type="AnimatedSprite" parent="."]
+position = Vector2( 6.19629, 623.149 )
+scale = Vector2( 0.7, 0.7 )
+frames = SubResource( 1 )
+frame = 4
+speed_scale = 0.05
+centered = false
+
+[node name="Bubbles2" type="AnimatedSprite" parent="."]
+position = Vector2( 773.408, 885.711 )
+scale = Vector2( 0.7, 0.7 )
+frames = SubResource( 2 )
+frame = 3
+speed_scale = 0.2
+centered = false
+
+[node name="metallica" type="Sprite" parent="."]
+position = Vector2( 677.076, 293.749 )
+scale = Vector2( 1.28964, 1.28964 )
+texture = ExtResource( 24 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( -65506, 4, 0, 65535, 4, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 8, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 11, 0, 0, 12, 0, 0, 13, 0, 0, 14, 0, 0, 15, 0, 0, 16, 4, 0, 30, 4, 0, 131071, 4, 0, 65540, 4, 0, 65552, 4, 0, 65555, 3, 0, 65563, 3, 0, 65566, 4, 0, 196607, 4, 0, 131072, 1, 0, 131073, 0, 0, 131074, 2, 0, 131076, 4, 0, 131078, 1, 0, 131079, 0, 0, 131080, 0, 0, 131081, 0, 0, 131082, 2, 0, 131084, 5, 0, 131086, 5, 0, 131088, 4, 0, 131090, 3, 0, 131101, 1, 0, 131102, 4, 0, 262143, 4, 0, 196612, 4, 0, 196620, 4, 0, 196622, 4, 0, 196624, 4, 0, 196638, 4, 0, 327679, 4, 0, 262145, 1, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 8, 0, 262151, 2, 0, 262157, 3, 0, 262160, 4, 0, 262161, 2, 0, 262171, 3, 0, 262174, 4, 0, 393215, 4, 0, 327686, 4, 0, 327689, 1, 0, 327690, 0, 0, 327691, 7, 0, 327696, 4, 0, 327709, 1, 0, 327710, 4, 0, 458751, 4, 0, 393216, 0, 0, 393217, 0, 0, 393218, 2, 0, 393220, 5, 0, 393222, 4, 0, 393223, 2, 0, 393227, 4, 0, 393228, 0, 0, 393229, 2, 0, 393231, 1, 0, 393232, 4, 0, 393234, 3, 0, 393246, 4, 0, 524287, 4, 0, 458756, 4, 0, 458761, 5, 0, 458763, 4, 0, 458768, 4, 0, 458780, 3, 0, 458782, 4, 0, 589823, 4, 0, 524290, 5, 0, 524292, 4, 0, 524297, 4, 0, 524301, 5, 0, 524304, 4, 0, 524305, 2, 0, 524318, 4, 0, 655359, 4, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589836, 3, 0, 589837, 4, 0, 589839, 1, 0, 589840, 4, 0, 589853, 1, 0, 589854, 4, 0, 720895, 4, 0, 655376, 4, 0, 655378, 3, 0, 655386, 1, 0, 655387, 2, 0, 655390, 4, 0, 786431, 4, 0, 720905, 1, 0, 720906, 0, 0, 720907, 0, 0, 720908, 0, 0, 720909, 0, 0, 720910, 2, 0, 720912, 4, 0, 720925, 5, 0, 720926, 4, 0, 851967, 4, 0, 786432, 7, 0, 786437, 5, 0, 786451, 5, 0, 786457, 3, 0, 786460, 3, 0, 786461, 4, 0, 786462, 4, 0, 917503, 4, 0, 851970, 1, 0, 851971, 0, 0, 851972, 0, 0, 851973, 0, 0, 851974, 0, 0, 851975, 0, 0, 851976, 2, 0, 851981, 1, 0, 851982, 0, 0, 851983, 0, 0, 851984, 0, 0, 851985, 0, 0, 851986, 0, 0, 851987, 4, 0, 851988, 2, 0, 851990, 1, 0, 851991, 2, 0, 851998, 4, 0, 983039, 4, 0, 917504, 7, 0, 917515, 3, 0, 917530, 1, 0, 917531, 2, 0, 917534, 4, 0, 1048575, 4, 0, 983045, 5, 0, 983050, 3, 0, 983056, 5, 0, 983060, 1, 0, 983061, 0, 0, 983062, 0, 0, 983063, 2, 0, 983069, 1, 0, 983070, 4, 0, 1114111, 4, 0, 1048578, 5, 0, 1048581, 4, 0, 1048584, 5, 0, 1048589, 5, 0, 1048592, 4, 0, 1048594, 5, 0, 1048601, 6, 0, 1048602, 7, 0, 1048606, 4, 0, 1179647, 4, 0, 1114112, 0, 0, 1114113, 0, 0, 1114114, 4, 0, 1114115, 0, 0, 1114116, 0, 0, 1114117, 4, 0, 1114118, 0, 0, 1114119, 0, 0, 1114120, 4, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0, 1114124, 0, 0, 1114125, 4, 0, 1114126, 0, 0, 1114127, 0, 0, 1114128, 4, 0, 1114129, 0, 0, 1114130, 4, 0, 1114131, 0, 0, 1114132, 0, 0, 1114133, 0, 0, 1114134, 0, 0, 1114135, 0, 0, 1114136, 0, 0, 1114137, 0, 0, 1114138, 0, 0, 1114139, 0, 0, 1114140, 0, 0, 1114141, 0, 0, 1114142, 4, 0 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color( 0, 0, 0, 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 986.83, 550.915 )
+scale = Vector2( 1.41476, 1.41476 )
+texture = ExtResource( 6 )
+energy = 0.88
+script = ExtResource( 12 )
+
+[node name="PlayerGreen" parent="." instance=ExtResource( 2 )]
+position = Vector2( 22.5082, 70.5926 )
+
+[node name="GreenLight2D2" type="Light2D" parent="PlayerGreen"]
+scale = Vector2( 0.500479, 0.500479 )
+texture = ExtResource( 6 )
+energy = 0.5
+script = ExtResource( 7 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="PlayerGreen"]
+occluder = SubResource( 3 )
+
+[node name="YellowFollow" type="Sprite" parent="."]
+position = Vector2( 43.7242, 70.5457 )
+texture = ExtResource( 10 )
+script = ExtResource( 9 )
+
+[node name="YellowLight2D2" type="Light2D" parent="YellowFollow"]
+scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 6 )
+script = ExtResource( 8 )
+
+[node name="PlayerYellow" parent="." instance=ExtResource( 3 )]
+position = Vector2( 43.7242, 70.5457 )
+
+[node name="LightOccluder2D2" type="LightOccluder2D" parent="PlayerYellow"]
+occluder = SubResource( 3 )
+
+[node name="PlayerBlue" parent="." instance=ExtResource( 4 )]
+position = Vector2( 65.0457, 70.5556 )
+
+[node name="Light2D" type="Light2D" parent="PlayerBlue"]
+scale = Vector2( 0.500479, 0.500479 )
+texture = ExtResource( 6 )
+energy = 0.5
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="PlayerBlue"]
+occluder = SubResource( 3 )
+
+[node name="TripLight" parent="." instance=ExtResource( 23 )]
+position = Vector2( 30.204, 755.099 )
+
+[node name="TripLight2" parent="." instance=ExtResource( 23 )]
+position = Vector2( 351.121, 739.997 )
+
+[node name="TripLight5" parent="." instance=ExtResource( 23 )]
+position = Vector2( 579.539, 692.804 )
+
+[node name="TripLight6" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1189.28, 366.223 )
+
+[node name="TripLight7" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1189.28, 111.377 )
+
+[node name="TripLight8" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1251.58, 47.1939 )
+
+[node name="TripLight9" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1757.49, 45.3061 )
+
+[node name="TripLight10" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1755.61, 241.632 )
+
+[node name="TripLight11" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1821.68, 430.407 )
+
+[node name="TripLight12" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1695.2, 619.182 )
+
+[node name="TripLight13" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1181.73, 617.294 )
+
+[node name="TripLight14" parent="." instance=ExtResource( 23 )]
+position = Vector2( 487.467, 218.8 )
+
+[node name="TripLight15" parent="." instance=ExtResource( 23 )]
+position = Vector2( 798.282, 351.571 )
+
+[node name="TripLight16" parent="." instance=ExtResource( 23 )]
+position = Vector2( 868.282, 995.571 )
+
+[node name="TripLight17" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1186.28, 995.571 )
+
+[node name="TripLight18" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1482.49, 802.635 )
+
+[node name="TripLight19" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1490.28, 521.571 )
+
+[node name="TripLight20" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1550.28, 389.571 )
+
+[node name="TripLight21" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1472.28, 261.571 )
+
+[node name="TripLight22" parent="." instance=ExtResource( 23 )]
+position = Vector2( 1559.2, 140.775 )
+
+[node name="LightCount" type="Label" parent="."]
+material = SubResource( 4 )
+margin_left = 1588.04
+margin_top = 910.367
+margin_right = 1700.04
+margin_bottom = 941.367
+rect_scale = Vector2( 3, 3 )
+text = "?/?"
+script = ExtResource( 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="LightCount"]
+[connection signal="switched_on" from="TripLight" to="." method="_on_TripLight_switched_on"]
+[connection signal="switched_on" from="TripLight2" to="." method="_on_TripLight2_switched_on"]
+[connection signal="switched_on" from="TripLight5" to="." method="_on_TripLight5_switched_on"]
+[connection signal="switched_on" from="TripLight6" to="." method="_on_TripLight6_switched_on"]
+[connection signal="switched_on" from="TripLight7" to="." method="_on_TripLight7_switched_on"]
+[connection signal="switched_on" from="TripLight8" to="." method="_on_TripLight8_switched_on"]
+[connection signal="switched_on" from="TripLight9" to="." method="_on_TripLight9_switched_on"]
+[connection signal="switched_on" from="TripLight10" to="." method="_on_TripLight10_switched_on"]
+[connection signal="switched_on" from="TripLight11" to="." method="_on_TripLight11_switched_on"]
+[connection signal="switched_on" from="TripLight12" to="." method="_on_TripLight12_switched_on"]
+[connection signal="switched_on" from="TripLight13" to="." method="_on_TripLight13_switched_on"]
+[connection signal="switched_on" from="TripLight14" to="." method="_on_TripLight14_switched_on"]
+[connection signal="switched_on" from="TripLight15" to="." method="_on_TripLight15_switched_on"]
+[connection signal="switched_on" from="TripLight16" to="." method="_on_TripLight16_switched_on"]
+[connection signal="switched_on" from="TripLight17" to="." method="_on_TripLight17_switched_on"]
+[connection signal="switched_on" from="TripLight18" to="." method="_on_TripLight18_switched_on"]
+[connection signal="switched_on" from="TripLight19" to="." method="_on_TripLight19_switched_on"]
+[connection signal="switched_on" from="TripLight20" to="." method="_on_TripLight20_switched_on"]
+[connection signal="switched_on" from="TripLight21" to="." method="_on_TripLight21_switched_on"]
+[connection signal="switched_on" from="TripLight22" to="." method="_on_TripLight22_switched_on"]

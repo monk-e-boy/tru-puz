@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/lvl6/light-texture.png" type="Texture" id=1]
+[ext_resource path="res://lvl6/TripLight2D.gd" type="Script" id=2]
+[ext_resource path="res://lvl6/TripLight.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 30.0
+
+[node name="TripLight" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+[connection signal="body_entered" from="Area2D" to="Light2D" method="_on_Area2D_body_entered"]
+[connection signal="switched_on" from="Light2D" to="." method="_on_Light2D_switched_on"]
