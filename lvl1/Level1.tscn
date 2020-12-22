@@ -388,8 +388,8 @@ position = Vector2( 1645.33, 277.358 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Planks1_SpringFrom"]
 shape = SubResource( 15 )
 disabled = true
-[connection signal="body_entered" from="StartBoxDrop" to="Block6" method="_on_StartBoxDrop_body_entered"]
 [connection signal="body_entered" from="StartBoxDrop" to="Block5" method="_on_StartBoxDrop_body_entered"]
+[connection signal="body_entered" from="StartBoxDrop" to="Block6" method="_on_StartBoxDrop_body_entered"]
 [connection signal="body_entered" from="POP-Detector" to="spP" method="_on_POPDetector_body_entered"]
 [connection signal="body_entered" from="POP-Detector" to="." method="_on_POPDetector_body_entered"]
 [connection signal="body_exited" from="POP-Detector" to="spP" method="_on_POPDetector_body_exited"]
@@ -402,7 +402,7 @@ disabled = true
 [connection signal="body_entered" from="POP-P2-Detector" to="." method="_on_POPP2Detector_body_entered"]
 [connection signal="body_exited" from="POP-P2-Detector" to="spP2" method="_on_POPP2Detector_body_exited"]
 [connection signal="body_exited" from="POP-P2-Detector" to="." method="_on_POPP2Detector_body_exited"]
-[connection signal="body_entered" from="Bucket" to="Block8" method="_on_Bucket_body_entered"]
 [connection signal="body_entered" from="Bucket" to="FallingBlock" method="_on_Bucket_body_entered"]
+[connection signal="body_entered" from="Bucket" to="Block8" method="_on_Bucket_body_entered"]
 [connection signal="body_entered" from="Bucket" to="." method="_on_Bucket_body_entered"]
 [connection signal="body_entered" from="Planks1" to="Planks1" method="_on_Planks1_body_entered"]
