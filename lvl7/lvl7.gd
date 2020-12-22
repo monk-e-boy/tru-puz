@@ -35,3 +35,17 @@ func _input(event):
 		if event.is_pressed():
 			if event.scancode == KEY_ESCAPE:
 				get_tree().quit() 
+
+
+func _on_Spring2_bounce():
+	var speed = -1200
+	$PlayerBlue.bounce(300 + rng.randf_range(-80, 80), speed, 30)
+	$PlayerGreen.bounce(300 + rng.randf_range(-80, 80), speed, 30)
+	$PlayerYellow.bounce(300 + rng.randf_range(-80, 80), speed, 30)
+
+
+func _on_Spring3_bounce():
+	var speed = -1500
+	$PlayerBlue.bounce(rng.randf_range(-80, 80), speed, 30)
+	$PlayerGreen.bounce(rng.randf_range(-80, 80), speed, 30)
+	$PlayerYellow.bounce(rng.randf_range(-80, 80), speed, 30)

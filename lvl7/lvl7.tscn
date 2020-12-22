@@ -15,6 +15,14 @@
 [ext_resource path="res://assets/lvl7/black-eyes-3.png" type="Texture" id=18]
 [ext_resource path="res://assets/lvl7/black-eyes-1.png" type="Texture" id=19]
 
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
@@ -42,14 +50,6 @@ shader_param/brightness = 1.0
 shader_param/contrast = 1.0
 shader_param/saturation = 0.0
 
-[sub_resource type="SpriteFrames" id=6]
-animations = [ {
-"frames": [ ExtResource( 15 ), ExtResource( 19 ), ExtResource( 17 ), ExtResource( 18 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
 [node name="lvl7" type="Node2D"]
 script = ExtResource( 9 )
 
@@ -62,27 +62,71 @@ texture = ExtResource( 1 )
 position = Vector2( 410.349, 268.184 )
 texture = ExtResource( 7 )
 
+[node name="DarkEyes" type="AnimatedSprite" parent="."]
+position = Vector2( 1006, 82 )
+frames = SubResource( 3 )
+script = ExtResource( 16 )
+
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 format = 1
-tile_data = PoolIntArray( -1, 4, 0, 65535, 4, 0, 11, 4, 0, 30, 4, 0, 131071, 4, 0, 65542, 3, 0, 65546, 1, 0, 65547, 4, 0, 65566, 4, 0, 196607, 4, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 2, 0, 131083, 4, 0, 131102, 4, 0, 262143, 4, 0, 196618, 1, 0, 196619, 4, 0, 196638, 4, 0, 327679, 4, 0, 262144, 2, 0, 262155, 4, 0, 262174, 4, 0, 393215, 4, 0, 327684, 1, 0, 327685, 0, 0, 327686, 2, 0, 327691, 4, 0, 327703, 3, 0, 327710, 4, 0, 458751, 4, 0, 393223, 1, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 4, 0, 393246, 4, 0, 524287, 4, 0, 458773, 3, 0, 458782, 4, 0, 589823, 4, 0, 524318, 4, 0, 655359, 4, 0, 589854, 4, 0, 720895, 4, 0, 655375, 1, 0, 655376, 2, 0, 655390, 4, 0, 786431, 4, 0, 720908, 3, 0, 720926, 4, 0, 851967, 4, 0, 786438, 3, 0, 786442, 3, 0, 786462, 4, 0, 917503, 4, 0, 851998, 4, 0, 983039, 4, 0, 917534, 4, 0, 1048575, 4, 0, 983070, 4, 0, 1114111, 4, 0, 1048606, 4, 0, 1179647, 4, 0, 1114112, 4, 0, 1114113, 4, 0, 1114114, 4, 0, 1114115, 4, 0, 1114116, 4, 0, 1114117, 4, 0, 1114118, 4, 0, 1114119, 4, 0, 1114120, 4, 0, 1114121, 4, 0, 1114122, 4, 0, 1114123, 4, 0, 1114124, 4, 0, 1114125, 4, 0, 1114126, 4, 0, 1114127, 4, 0, 1114128, 4, 0, 1114129, 4, 0, 1114130, 4, 0, 1114131, 4, 0, 1114132, 4, 0, 1114133, 4, 0, 1114134, 4, 0, 1114135, 4, 0, 1114136, 4, 0, 1114137, 4, 0, 1114138, 4, 0, 1114139, 4, 0, 1114140, 4, 0, 1114141, 4, 0, 1114142, 4, 0 )
+tile_data = PoolIntArray( -1, 4, 0, 65535, 4, 0, 11, 4, 0, 30, 4, 0, 131071, 4, 0, 65542, 3, 0, 65546, 1, 0, 65547, 4, 0, 65556, 3, 0, 65560, 3, 0, 65564, 3, 0, 65566, 4, 0, 196607, 4, 0, 131073, 1, 0, 131074, 0, 0, 131075, 2, 0, 131083, 4, 0, 131088, 3, 0, 131102, 4, 0, 262143, 4, 0, 196618, 1, 0, 196619, 4, 0, 196638, 4, 0, 327679, 4, 0, 262144, 2, 0, 262155, 4, 0, 262174, 4, 0, 393215, 4, 0, 327684, 1, 0, 327685, 0, 0, 327686, 2, 0, 327703, 3, 0, 327710, 4, 0, 458751, 4, 0, 393223, 1, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 2, 0, 393246, 4, 0, 524287, 4, 0, 458773, 3, 0, 458782, 4, 0, 589823, 4, 0, 524318, 4, 0, 655359, 4, 0, 589854, 4, 0, 720895, 4, 0, 655375, 1, 0, 655376, 2, 0, 655390, 4, 0, 786431, 4, 0, 720908, 3, 0, 720923, 1, 0, 720924, 2, 0, 720926, 4, 0, 851967, 4, 0, 786438, 3, 0, 786442, 3, 0, 786462, 4, 0, 917503, 4, 0, 851998, 4, 0, 983039, 4, 0, 917534, 4, 0, 1048575, 4, 0, 983070, 4, 0, 1114111, 4, 0, 1048606, 4, 0, 1179647, 4, 0, 1114112, 4, 0, 1114113, 4, 0, 1114114, 4, 0, 1114115, 4, 0, 1114116, 4, 0, 1114117, 4, 0, 1114118, 4, 0, 1114119, 4, 0, 1114120, 4, 0, 1114121, 4, 0, 1114122, 4, 0, 1114123, 4, 0, 1114124, 4, 0, 1114125, 4, 0, 1114126, 4, 0, 1114127, 4, 0, 1114128, 4, 0, 1114129, 4, 0, 1114130, 4, 0, 1114131, 4, 0, 1114132, 4, 0, 1114133, 4, 0, 1114134, 4, 0, 1114135, 4, 0, 1114136, 4, 0, 1114137, 4, 0, 1114138, 4, 0, 1114139, 4, 0, 1114140, 4, 0, 1114141, 4, 0, 1114142, 4, 0 )
 
 [node name="PlayerBlue" parent="." instance=ExtResource( 4 )]
-position = Vector2( 16.9109, 987.407 )
+position = Vector2( 1746.36, 560.389 )
 
 [node name="PlayerGreen" parent="." instance=ExtResource( 5 )]
-position = Vector2( 42.8934, 984.65 )
+position = Vector2( 1774.34, 587.632 )
 
 [node name="PlayerYellow" parent="." instance=ExtResource( 3 )]
-position = Vector2( 65.8893, 993.607 )
+position = Vector2( 1799.34, 606.589 )
 
 [node name="TxtRctBandW" type="TextureRect" parent="."]
 material = SubResource( 2 )
-margin_left = 820.356
-margin_top = 43.238
-margin_right = 861.356
-margin_bottom = 63.238
-rect_scale = Vector2( 10.4434, 6.82977 )
+margin_left = 19.9113
+margin_top = 468.916
+margin_right = 60.9113
+margin_bottom = 488.916
+rect_scale = Vector2( 22.645, 23.8667 )
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TxtRctBandW2" type="TextureRect" parent="."]
+material = SubResource( 2 )
+margin_left = 771.905
+margin_top = 11.4461
+margin_right = 812.905
+margin_bottom = 31.4461
+rect_scale = Vector2( 27.8049, 18.3584 )
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TxtRctBandW3" type="TextureRect" parent="."]
+material = SubResource( 2 )
+margin_left = 841.395
+margin_top = 212.789
+margin_right = 882.395
+margin_bottom = 232.789
+rect_scale = Vector2( 26.1336, 18.5536 )
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TxtRctBandW4" type="TextureRect" parent="."]
+material = SubResource( 2 )
+margin_left = 1400.88
+margin_top = 424.823
+margin_right = 1441.88
+margin_bottom = 444.823
+rect_scale = Vector2( 12.614, 13.88 )
 texture = ExtResource( 6 )
 expand = true
 __meta__ = {
@@ -94,8 +138,8 @@ __meta__ = {
 [node name="Spring2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 1036.46, 615.067 )
 
-[node name="DarkEyes" type="AnimatedSprite" parent="."]
-position = Vector2( 1006, 82 )
-frames = SubResource( 6 )
-script = ExtResource( 16 )
+[node name="Spring3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 1776.32, 678.984 )
 [connection signal="bounce" from="Spring" to="." method="_on_Spring_bounce"]
+[connection signal="bounce" from="Spring2" to="." method="_on_Spring2_bounce"]
+[connection signal="bounce" from="Spring3" to="." method="_on_Spring3_bounce"]
